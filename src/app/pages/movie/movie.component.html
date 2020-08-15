@@ -1,0 +1,48 @@
+<div class="container">
+  <span class="title header">Movies</span>
+</div>
+
+<div *ngIf="auth.isExecutiveProducer()" class="container">
+  <button mat-raised-button color="primary" (click)="openForm()">Add New Movie</button>
+</div>
+
+<div *ngIf="auth.isCastingAssistant()">
+  <div *ngFor="let movie of Object.keys(movieService.items)" class="card_container_col_2">
+    <div class="container">
+      <mat-card>
+        <mat-card-content>
+            <mat-card-title>{{ movieService.items[movie].details.name }}</mat-card-title>
+            <div>
+              {{ movieService.items[movie].details.description }}
+            </div>
+            <br/>
+            <div>
+              <span class="title">Category: </span>
+              {{ movieService.items[movie].category.name }}
+            </div>
+            <div>
+              <span class="title">Actors: </span>
+              <span *ngFor="let actor of movieService.items[movie].actors; let last = last;">
+                {{ actor.name }}<ng-container *ngIf="!last">,</ng-container>
+              </span>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button 
+            *ngIf="auth.isCastingDirector()"
+            mat-stroked-button color="primary" 
+            (click)="openForm(movieService.items[movie])">
+            Edit
+          </button>
+          <button 
+            *ngIf="auth.isExecutiveProducer()"
+            mat-stroked-button color="warn" 
+            (click)="onDelete(movieService.items[movie])">
+            Delete
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+

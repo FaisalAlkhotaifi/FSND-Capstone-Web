@@ -1,0 +1,39 @@
+<div class="container">
+    <span class="title header">Actors</span>
+  </div>
+  
+  <div *ngIf="auth.isCastingDirector()" class="container">
+    <button mat-raised-button color="primary" (click)="openForm()">Add New Actor</button>
+  </div>
+  
+  <div>
+    <div *ngFor="let actor of Object.keys(actorService.items)" class="card_container_col_2">
+      <div class="container">
+        <mat-card>
+          <mat-card-content>
+              <mat-card-title>{{ actorService.items[actor].name }}</mat-card-title>
+              <div>
+                <span class="title">Age: </span>
+                {{ actorService.items[actor].age }}
+              </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <button 
+              *ngIf="auth.isCastingDirector()" 
+              mat-stroked-button color="primary" 
+              (click)="openForm(actorService.items[actor])">
+              Edit
+            </button>
+            <button 
+              *ngIf="auth.isCastingDirector()" 
+              mat-stroked-button color="warn" 
+              (click)="onDelete(actorService.items[actor])">
+              Delete
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  
+  

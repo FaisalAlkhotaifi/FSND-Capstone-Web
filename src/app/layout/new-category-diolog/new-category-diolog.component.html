@@ -1,0 +1,13 @@
+<div>
+    <h2 mat-dialog-title>New Category</h2>
+    <div mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Category Name</mat-label>
+        <input matInput [(ngModel)]="data.name">
+    </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-stroked-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+        <button mat-stroked-button [mat-dialog-close]="data" (click)="onCancel()">Cancel</button>
+    </div>
+</div>

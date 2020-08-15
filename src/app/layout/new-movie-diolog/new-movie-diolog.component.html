@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>New Movie</h2>
+<div mat-dialog-content>
+    <div>
+        <mat-form-field class="full_width">
+            <mat-label>Name</mat-label>
+            <input matInput [(ngModel)]="data.details.name">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Description</mat-label>
+            <textarea matInput [(ngModel)]="data.details.description"></textarea>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Category</mat-label>
+            <mat-select [formControl]="categoryControl" [compareWith]="compareCategoryByValue">
+              <mat-option *ngFor="let category of categoryObject.keys(categoryService.items)" [(value)]="categoryService.items[category]">
+                {{categoryService.items[category].name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Actors</mat-label>
+            <mat-select [formControl]="actorsControl" multiple [compareWith]="compareActorByValue">
+              <mat-select-trigger>
+                <span *ngFor="let actor of actorsControl.value; let last = last;">
+                  {{ actor.name }}<ng-container *ngIf="!last">,</ng-container>
+                </span>
+              </mat-select-trigger>
+              <mat-option *ngFor="let actor of actorObject.keys(actorService.items)" [value]="actorService.items[actor]">
+                {{actorService.items[actor].name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <!-- <button mat-stroked-button color="primary" [mat-dialog-close]="data">Save</button> -->
+    <button mat-stroked-button color="primary" (click)="onSave()">Save</button>
+    <button mat-stroked-button (click)="onCancel()">Cancel</button>
+</div>

@@ -1,0 +1,26 @@
+<div class="toolbar" role="banner">
+    <div class="header">
+      <a class="header_link" href="/">
+        <span class="header_logo">Casting Agency</span>
+      </a>
+    </div>
+    <div *ngIf="isLogin" class="menu_container">
+      <div class="header">
+        <a class="header_item" href="/movies">
+          <span class="header_item">Movies</span>
+        </a>
+      </div>
+      <div class="header">
+        <a class="header_item" href="/actors">
+          <span class="header_item">Actors</span>
+        </a>
+      </div>
+      <div class="header">
+        <a class="header_item" href="/categories">
+          <span class="header_item">Categories</span>
+        </a>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <button mat-stroked-button (click)="onLogout()">{{ loginButtonTitle }}</button>
+</div>

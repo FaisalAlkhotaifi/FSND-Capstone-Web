@@ -1,0 +1,35 @@
+.toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #4a4b5d;
+    color: white;
+    font-weight: 600;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.toolbar span {
+    font-size: large;
+}
+
+.header {
+    padding: 1rem;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.header_logo {
+    font-size: 1.5rem;
+}
+
+.menu_container {
+    display: flex;
+}
