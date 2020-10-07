@@ -43,12 +43,12 @@ export class MovieService {
   }
 
   save(movie: Movie) {
+    console.log("I am at save movie");
     const movie_formatted = this.getMovieformatted(movie);
     console.log(movie_formatted)
     if (movie_formatted.id >= 0){ // PATCH
       this.http.patch(this.url + '/movie/' + movie_formatted.id, movie_formatted, this.getHeaders())
         .subscribe((res: any) => {
-          console.log(res);
           if (res.success) {
             this.movieToItem(res.movie);
           }
@@ -56,9 +56,10 @@ export class MovieService {
     } else { // INSERT
       this.http.post(this.url + '/movie', movie_formatted, this.getHeaders())
         .subscribe((res: any) => {
-          console.log(res);
+          console.log('movie', res);
           if (res.success) {
             this.movieToItem(res.movie);
+            console.log('items', this.items);
           }
         });
     }

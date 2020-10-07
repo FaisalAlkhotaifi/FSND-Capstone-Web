@@ -48,6 +48,7 @@ export class NewMovieDiologComponent implements OnInit {
   }
 
   onSave() {
+    console.log("dddd")
     this.data.category = this.categoryControl.value;
     this.data.actors = this.actorsControl.value;
     
